@@ -13,3 +13,6 @@ compiled/config/youtube.js
 
 ## floobits
 .floo*
+
+##webpacked bundle
+dist/
