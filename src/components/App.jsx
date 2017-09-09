@@ -5,12 +5,25 @@ class App extends React.Component {
       selectedVideo: window.exampleVideoData[0],
       videos: window.exampleVideoData
     };
-
     this.handleVideoClick = this.handleVideoClick.bind(this);
+    this.handleSearchResults = this.handleSearchResults.bind(this);
+  }
+
+  componentDidMount() {
+    this.search();
   }
 
   handleVideoClick(selectedVideo) {
     this.setState({selectedVideo});
+  }
+
+  search(term = 'Gordon Ramsay') {
+    const options = { q: term, max: 5 };
+    this.props.searchYouTube(options, this.handleSearchResults);
+  }
+
+  handleSearchResults(newVideos) {
+    this.setState({videos: newVideos, selectedVideo: newVideos[0]});
   }
 
   render() {
