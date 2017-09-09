@@ -2,15 +2,11 @@ import React from 'react';
 import Search from './Search.jsx';
 import VideoPlayer from './VideoPlayer.jsx';
 import VideoList from './VideoList.jsx';
-import {exampleVideoData} from '../data/exampleVideoData.js';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      selectedVideo: exampleVideoData[0],
-      videos: exampleVideoData
-    };
+    this.state = {selectedVideo: null, videos: null};
 
     this.handleVideoClick = (selectedVideo) => this.setState({selectedVideo});
     this.handleSearchResults = (newVideos) => this.setState({videos: newVideos, selectedVideo: newVideos[0]});
@@ -36,10 +32,10 @@ export default class App extends React.Component {
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <VideoPlayer video={this.state.selectedVideo} />
+            {this.state.videos && <VideoPlayer video={this.state.selectedVideo} /> }
           </div>
           <div className="col-md-5">
-            <VideoList handler={this.handleVideoClick} videos={this.state.videos} />
+            {this.state.videos && <VideoList handler={this.handleVideoClick} videos={this.state.videos} />}
           </div>
         </div>
       </div>

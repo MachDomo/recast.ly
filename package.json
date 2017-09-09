@@ -6,8 +6,9 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "pack": "babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --watch --source-maps inline & live-server",
-    "start" : "webpack --watch",
+    "start" : "webpack --watch & live-server",
+    "pack" : "webpack --watch",
+    "live" : "live-server",
     "test": "live-server --open=./SpecRunner.html --port=8081",
     "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash"
   },
