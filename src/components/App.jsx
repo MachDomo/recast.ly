@@ -7,17 +7,18 @@ class App extends React.Component {
     };
     this.handleVideoClick = this.handleVideoClick.bind(this);
     this.handleSearchResults = this.handleSearchResults.bind(this);
+    this.handleLiveSearch = _.debounce(this._search, 500).bind(this);
   }
 
   componentDidMount() {
-    this.search();
+    this._search();
   }
 
   handleVideoClick(selectedVideo) {
     this.setState({selectedVideo});
   }
 
-  search(term = 'Gordon Ramsay') {
+  _search(term = 'Gordon Ramsay') {
     const options = { q: term, max: 5 };
     this.props.searchYouTube(options, this.handleSearchResults);
   }
@@ -31,7 +32,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>search</em> view goes here</h5></div>
+            <Search handler={this.handleLiveSearch} />
           </div>
         </nav>
         <div className="row">
