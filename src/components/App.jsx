@@ -1,9 +1,15 @@
-class App extends React.Component {
+import React from 'react';
+import Search from './Search.jsx';
+import VideoPlayer from './VideoPlayer.jsx';
+import VideoList from './VideoList.jsx';
+import {exampleVideoData} from '../data/exampleVideoData.js';
+
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedVideo: window.exampleVideoData[0],
-      videos: window.exampleVideoData
+      selectedVideo: exampleVideoData[0],
+      videos: exampleVideoData
     };
 
     this.handleVideoClick = (selectedVideo) => this.setState({selectedVideo});
@@ -40,7 +46,3 @@ class App extends React.Component {
     );
   }
 }
-
-// In the ES6 spec, files are "modules" and do not share a top-level scope
-// `var` declarations will only exist globally where explicitly defined
-window.App = App;

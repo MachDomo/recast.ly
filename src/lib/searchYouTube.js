@@ -1,4 +1,6 @@
-var searchYouTube = (options, callback) => {
+import {YOUTUBE_API_KEY} from '../config/youtube.js';
+
+export default function searchYouTube(options, callback) {
   $.ajax({
     url: 'https://www.googleapis.com/youtube/v3/search',
     type: 'GET',
@@ -6,6 +8,6 @@ var searchYouTube = (options, callback) => {
     success: (data) => callback(data.items),
     error: (err)=> console.log(err)
   });
-};
+}
 
-window.searchYouTube = searchYouTube;
+// window.searchYouTube = searchYouTube;
